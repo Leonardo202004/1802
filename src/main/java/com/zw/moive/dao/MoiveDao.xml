@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+     <mapper namespace="com.zw.moive.dao.MoiveDao">
+     	<select id="list" resultType="Moive">
+     		select * from t_movie
+     		<where>
+     		<if test="name!=null and name!=''">
+
+				name like "%"#{name}"%"
+
+			</if>
+			<if test="actor!=null and actor!=''">
+				and actor =#{actor}
+			</if>
+
+			<if test="years!=null">
+				and years =#{years}
+			</if>
+			<if test="d1!=null and d1!=''">
+				and uptime >= #{d1}
+
+			</if>
+			<if test="d2!=null and d2!=''">
+				and uptime &lt;= #{d2}
+			</if>
+			<if test="p1!=null">
+				and price >= #{p1}
+
+			</if>
+
+			<if test="p2!=null">
+				and price &lt;= #{p2}
+
+			</if>
+
+			<if test="t1!=null">
+				and longtime>= #{t1}
+
+			</if>
+
+			<if test="t2!=null">
+				and longtime &lt;= #{t2}
+
+			</if>
+     		</where>
+     	
+     	</select>
+     </mapper>
